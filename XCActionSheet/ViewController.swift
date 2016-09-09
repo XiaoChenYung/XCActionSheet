@@ -14,6 +14,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let acView = XCActionSheet()
+        acView.initView(title: "哈哈", buttonTitles: ["哈哈哈","嗯男","嗯哼"], cancleBtuttonTitle: "")
+        acView.showInView(view)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

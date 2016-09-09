@@ -14,6 +14,7 @@
 		922E057B1D82846700CBEF0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 922E05791D82846700CBEF0B /* LaunchScreen.storyboard */; };
 		922E05861D82846700CBEF0B /* XCActionSheetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922E05851D82846700CBEF0B /* XCActionSheetTests.swift */; };
 		922E05911D82846700CBEF0B /* XCActionSheetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922E05901D82846700CBEF0B /* XCActionSheetUITests.swift */; };
+		92B4E6361D828632003DAF7E /* XCActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B4E6351D828632003DAF7E /* XCActionSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		922E058C1D82846700CBEF0B /* XCActionSheetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XCActionSheetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		922E05901D82846700CBEF0B /* XCActionSheetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCActionSheetUITests.swift; sourceTree = "<group>"; };
 		922E05921D82846700CBEF0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92B4E6351D828632003DAF7E /* XCActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCActionSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		922E056F1D82846700CBEF0B /* XCActionSheet */ = {
 			isa = PBXGroup;
 			children = (
+				92B4E6341D82855D003DAF7E /* XCActionSheet */,
 				922E05701D82846700CBEF0B /* AppDelegate.swift */,
 				922E05721D82846700CBEF0B /* ViewController.swift */,
 				922E05741D82846700CBEF0B /* Main.storyboard */,
@@ -123,6 +126,14 @@
 				922E05921D82846700CBEF0B /* Info.plist */,
 			);
 			path = XCActionSheetUITests;
+			sourceTree = "<group>";
+		};
+		92B4E6341D82855D003DAF7E /* XCActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				92B4E6351D828632003DAF7E /* XCActionSheet.swift */,
+			);
+			path = XCActionSheet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +204,7 @@
 				TargetAttributes = {
 					922E056C1D82846700CBEF0B = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 898WYQ9K4N;
 					};
 					922E05801D82846700CBEF0B = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -258,6 +270,7 @@
 			files = (
 				922E05731D82846700CBEF0B /* ViewController.swift in Sources */,
 				922E05711D82846700CBEF0B /* AppDelegate.swift in Sources */,
+				92B4E6361D828632003DAF7E /* XCActionSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,7 +412,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = XCActionSheet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.touchmedia.XCActionSheet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -410,7 +425,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = XCActionSheet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.touchmedia.XCActionSheet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -482,6 +499,7 @@
 				922E05971D82846700CBEF0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		922E05981D82846700CBEF0B /* Build configuration list for PBXNativeTarget "XCActionSheetTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +508,7 @@
 				922E059A1D82846700CBEF0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		922E059B1D82846700CBEF0B /* Build configuration list for PBXNativeTarget "XCActionSheetUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +517,7 @@
 				922E059D1D82846700CBEF0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
