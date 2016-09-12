@@ -70,13 +70,9 @@ class XCActionSheet: UIView {
         view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
         view.backgroundColor = UIColor.clearColor()
         templayer.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
-        templayer.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.1).CGColor
+        templayer.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.2).CGColor
         view.layer.addSublayer(templayer)
         insertSubview(view, atIndex: 0)
-    }
-    
-    deinit {
-        print("挂了")
     }
     
     private func addbuttons() {
@@ -137,7 +133,9 @@ class XCActionSheet: UIView {
     
     func click(button: UIButton) -> () {
         button.highlighted = true
-        delegate?.dismissWithButtonIndex(self, index: button.tag)
+        if button.tag != 100 {
+            delegate?.dismissWithButtonIndex(self, index: button.tag)
+        }
     }
 
 }
