@@ -15,7 +15,7 @@ class ViewController: UIViewController,XCActionSheetDelegate {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    @IBAction func show(sender: AnyObject) {
         let acView = XCActionSheet()
         acView.delegate = self
         acView.initView(title: "哈哈", buttonTitles: ["哈哈哈","嗯男","嗯哼"], cancleBtuttonTitle: "取消")
