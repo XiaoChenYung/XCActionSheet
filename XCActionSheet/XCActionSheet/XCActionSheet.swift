@@ -21,8 +21,12 @@ class XCActionSheet: UIView {
     
     private func config() {
         backgroundColor = UIColor.init(red: 230, green: 230, blue: 230, alpha: 0.84)
+        let blurEffect = UIBlurEffect(style: .Light)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        addSubview(blurView)
         addbuttons()
         addlines()
+        
     }
     
     private func addbuttons() {
@@ -31,7 +35,9 @@ class XCActionSheet: UIView {
             let button = UIButton()
             button.frame = CGRectMake(0, cellHeight * index, UIScreen.mainScreen().bounds.size.width, cellHeight)
             button.setTitle(item as? String, forState: .Normal)
+            button.setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
             button.setTitleColor(UIColor.blackColor(), forState: .Normal)
+            button.setBackgroundImage(UIImage(named: "button"), forState: .Highlighted)
             addSubview(button)
             index += 1
         }
@@ -44,6 +50,10 @@ class XCActionSheet: UIView {
             addSubview(line)
             line.frame = CGRectMake(0, 44 * CGFloat(index), UIScreen.mainScreen().bounds.size.width, 0.5)
         }
+    }
+    
+    private func addBottomMargion() {
+        
     }
     
     func showInView(view: UIView) -> () {
