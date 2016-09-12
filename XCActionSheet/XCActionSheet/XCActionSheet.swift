@@ -8,15 +8,20 @@
 //
 
 import UIKit
-let cellHeight: CGFloat = 44
+let cellHeight: CGFloat = 50
 let blackMarganHeight: CGFloat = 5
 
+protocol XCActionSheetDelegate: class {
+    func dismissWithButtonIndex (object: AnyObject, index: Int) -> ()
+}
+
 class XCActionSheet: UIView {
+    
+    weak var delegate: XCActionSheetDelegate?
     
     let items = NSMutableArray()
     
     var cancleTitle = ""
-    
     
     func initView(title title: String,buttonTitles titles: [String],cancleBtuttonTitle: String) -> () {
         items.addObjectsFromArray(titles)
@@ -46,6 +51,8 @@ class XCActionSheet: UIView {
             button.setBackgroundImage(UIImage(named: "button"), forState: .Highlighted)
             addSubview(button)
             index += 1
+            button.tag = Int(index)
+            button.addTarget(self, action: #selector(XCActionSheet.click), forControlEvents: .TouchUpInside)
         }
     }
     
@@ -60,7 +67,7 @@ class XCActionSheet: UIView {
     
     private func addBottomMargion() {
         let view = UIView()
-        view.backgroundColor = UIColor.darkGrayColor()
+        view.backgroundColor = UIColor.init(red: 143.0/255.0, green: 143.0/255.0, blue: 143.0/255.0, alpha: 0.9)
         view.frame = CGRectMake(0, cellHeight * CGFloat(items.count), UIScreen.mainScreen().bounds.size.width, blackMarganHeight)
         addSubview(view)
     }
@@ -73,6 +80,8 @@ class XCActionSheet: UIView {
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
         button.setBackgroundImage(UIImage(named: "button"), forState: .Highlighted)
         addSubview(button)
+        button.addTarget(self, action: #selector(XCActionSheet.click), forControlEvents: .TouchUpInside)
+        button.tag = 100
     }
     
     func showInView(view: UIView) -> () {
@@ -81,6 +90,10 @@ class XCActionSheet: UIView {
         UIView.animateWithDuration(0.2) { 
             self.frame = CGRectMake(0, view.bounds.size.height - cellHeight * CGFloat(self.items.count + 1) - blackMarganHeight, view.bounds.size.width, cellHeight * CGFloat(self.items.count + 1) + blackMarganHeight)
         }
+    }
+    
+    func click(button: UIButton) -> () {
+        delegate?.dismissWithButtonIndex(self, index: button.tag)
     }
 
 }
