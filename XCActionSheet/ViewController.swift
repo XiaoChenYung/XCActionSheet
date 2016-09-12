@@ -22,6 +22,10 @@ class ViewController: UIViewController,XCActionSheetDelegate {
         acView.showInView(view)
     }
     
+    deinit {
+        print("控制器挂了")
+    }
+    
     func dismissWithButtonIndex(object: AnyObject, index: NSInteger) {
         print(object)
         print(index)

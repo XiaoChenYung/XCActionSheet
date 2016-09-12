@@ -75,6 +75,10 @@ class XCActionSheet: UIView {
         insertSubview(view, atIndex: 0)
     }
     
+    deinit {
+        print("挂了")
+    }
+    
     private func addbuttons() {
         var index: CGFloat = 0
         for item in items {
