@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="705b499e9c443d44bbe13820476adeca" translatesAutoresizingMaskIntoConstraints="NO" id="AiQ-Gx-DAz">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_1740" translatesAutoresizingMaskIntoConstraints="NO" id="AiQ-Gx-DAz">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3rl-LN-Whc">
@@ -49,6 +49,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="705b499e9c443d44bbe13820476adeca" width="400" height="574"/>
+        <image name="IMG_1740" width="640" height="1136"/>
     </resources>
 </document>

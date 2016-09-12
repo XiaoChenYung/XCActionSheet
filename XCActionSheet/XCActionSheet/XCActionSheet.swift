@@ -39,12 +39,12 @@ class XCActionSheet: UIView {
     private func config() {
 //        backgroundColor = UIColor.init(red: 230, green: 230, blue: 230, alpha: 0.84)
         self.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
-        contentView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+//        contentView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
         addSubview(contentView)
         
         
         
-        let blurEffect = UIBlurEffect(style: .Light)
+        let blurEffect = UIBlurEffect(style: .ExtraLight)
         let blurView = UIVisualEffectView(effect: blurEffect)
         blurView.frame = CGRectMake(0, 0, fatherView!.bounds.size.width, cellHeight * CGFloat(self.items.count + 1) + blackMarganHeight)
         contentView.addSubview(blurView)
@@ -94,7 +94,7 @@ class XCActionSheet: UIView {
     private func addlines() {
         for index in 1..<items.count {
             let line = UIView()
-            line.backgroundColor = UIColor.lightGrayColor();
+            line.backgroundColor = UIColor.lightGrayColor()
             contentView.addSubview(line)
             line.frame = CGRectMake(0, cellHeight * CGFloat(index), UIScreen.mainScreen().bounds.size.width, 0.5)
         }
@@ -122,6 +122,7 @@ class XCActionSheet: UIView {
     func showInView(view: UIView) -> () {
         view.addSubview(self)
         fatherView = view
+        
         contentView.frame = CGRectMake(0, view.bounds.size.height, view.bounds.size.width, cellHeight * CGFloat(items.count + 1) + blackMarganHeight)
         config()
         UIView.animateWithDuration(0.2) {
@@ -131,6 +132,7 @@ class XCActionSheet: UIView {
     }
     
     func click(button: UIButton) -> () {
+        button.highlighted = true
         delegate?.dismissWithButtonIndex(self, index: button.tag)
     }
 
