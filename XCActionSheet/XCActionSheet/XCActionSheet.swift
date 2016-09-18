@@ -12,7 +12,7 @@ let cellHeight: CGFloat = 50
 let blackMarganHeight: CGFloat = 5
 
 protocol XCActionSheetDelegate: class {
-    func dismissWithButtonIndex (object: AnyObject, index: Int) -> ()
+    func dismissWithButtonIndex (_ object: AnyObject, index: Int) -> ()
 }
 
 class XCActionSheet: UIView {
@@ -30,23 +30,23 @@ class XCActionSheet: UIView {
     var fatherView: UIView?
     
     
-    func initView(title title: String,buttonTitles titles: [String],cancleBtuttonTitle: String) -> () {
-        items.addObjectsFromArray(titles)
+    func initView(title: String,buttonTitles titles: [String],cancleBtuttonTitle: String) -> () {
+        items.addObjects(from: titles)
         cancleTitle = cancleBtuttonTitle
         
     }
     
-    private func config() {
+    fileprivate func config() {
 //        backgroundColor = UIColor.init(red: 230, green: 230, blue: 230, alpha: 0.84)
-        self.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+        self.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
 //        contentView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
         addSubview(contentView)
         
         
         
-        let blurEffect = UIBlurEffect(style: .ExtraLight)
+        let blurEffect = UIBlurEffect(style: .extraLight)
         let blurView = UIVisualEffectView(effect: blurEffect)
-        blurView.frame = CGRectMake(0, 0, fatherView!.bounds.size.width, cellHeight * CGFloat(self.items.count + 1) + blackMarganHeight)
+        blurView.frame = CGRect(x: 0, y: 0, width: fatherView!.bounds.size.width, height: cellHeight * CGFloat(self.items.count + 1) + blackMarganHeight)
         contentView.addSubview(blurView)
         addbuttons()
         addlines()
@@ -56,83 +56,83 @@ class XCActionSheet: UIView {
     }
     
     func dismiss() -> () {
-        UIView.animateWithDuration(0.2, animations: { 
-            self.contentView.frame = CGRectMake(0, self.fatherView!.bounds.size.height, self.fatherView!.bounds.size.width, cellHeight * CGFloat(self.items.count + 1) + blackMarganHeight)
-            }) { (isAn) in
+        UIView.animate(withDuration: 0.2, animations: { 
+            self.contentView.frame = CGRect(x: 0, y: self.fatherView!.bounds.size.height, width: self.fatherView!.bounds.size.width, height: cellHeight * CGFloat(self.items.count + 1) + blackMarganHeight)
+            }, completion: { (isAn) in
                 self.removeFromSuperview()
-        }
+        }) 
     }
     
-    private func addBgView() {
+    fileprivate func addBgView() {
         let view = UIView()
         let tap = UITapGestureRecognizer(target: self, action: #selector(XCActionSheet.dismiss))
         view.addGestureRecognizer(tap)
-        view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
-        view.backgroundColor = UIColor.clearColor()
-        templayer.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
-        templayer.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.2).CGColor
+        view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+        view.backgroundColor = UIColor.clear
+        templayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+        templayer.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.2).cgColor
         view.layer.addSublayer(templayer)
-        insertSubview(view, atIndex: 0)
+        insertSubview(view, at: 0)
     }
     
-    private func addbuttons() {
+    fileprivate func addbuttons() {
         var index: CGFloat = 0
         for item in items {
             let button = UIButton()
-            button.frame = CGRectMake(0, cellHeight * index, UIScreen.mainScreen().bounds.size.width, cellHeight)
-            button.setTitle(item as? String, forState: .Normal)
-            button.setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
-            button.setTitleColor(UIColor.blackColor(), forState: .Normal)
-            button.setBackgroundImage(UIImage(named: "button"), forState: .Highlighted)
+            button.frame = CGRect(x: 0, y: cellHeight * index, width: UIScreen.main.bounds.size.width, height: cellHeight)
+            button.setTitle(item as? String, for: UIControlState())
+            button.setTitleColor(UIColor.white, for: .highlighted)
+            button.setTitleColor(UIColor.black, for: UIControlState())
+            button.setBackgroundImage(UIImage(named: "button"), for: .highlighted)
             contentView.addSubview(button)
             index += 1
             button.tag = Int(index)
-            button.addTarget(self, action: #selector(XCActionSheet.click), forControlEvents: .TouchUpInside)
+            button.addTarget(self, action: #selector(XCActionSheet.click), for: .touchUpInside)
         }
     }
     
-    private func addlines() {
+    fileprivate func addlines() {
         for index in 1..<items.count {
             let line = UIView()
-            line.backgroundColor = UIColor.lightGrayColor()
+            line.backgroundColor = UIColor.lightGray
             contentView.addSubview(line)
-            line.frame = CGRectMake(0, cellHeight * CGFloat(index), UIScreen.mainScreen().bounds.size.width, 0.5)
+            line.frame = CGRect(x: 0, y: cellHeight * CGFloat(index), width: UIScreen.main.bounds.size.width, height: 0.5)
         }
     }
     
-    private func addBottomMargion() {
+    fileprivate func addBottomMargion() {
         let view = UIView()
         view.backgroundColor = UIColor.init(red: 143.0/255.0, green: 143.0/255.0, blue: 143.0/255.0, alpha: 0.9)
-        view.frame = CGRectMake(0, cellHeight * CGFloat(items.count), UIScreen.mainScreen().bounds.size.width, blackMarganHeight)
+        view.frame = CGRect(x: 0, y: cellHeight * CGFloat(items.count), width: UIScreen.main.bounds.size.width, height: blackMarganHeight)
         contentView.addSubview(view)
     }
     
-    private func addCancleButton() {
+    fileprivate func addCancleButton() {
         let button = UIButton()
-        button.frame = CGRectMake(0, cellHeight * CGFloat(items.count) + blackMarganHeight, UIScreen.mainScreen().bounds.size.width, cellHeight)
-        button.setTitle(cancleTitle, forState: .Normal)
-        button.setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
-        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        button.setBackgroundImage(UIImage(named: "button"), forState: .Highlighted)
+        button.frame = CGRect(x: 0, y: cellHeight * CGFloat(items.count) + blackMarganHeight, width: UIScreen.main.bounds.size.width, height: cellHeight)
+        button.setTitle(cancleTitle, for: UIControlState())
+        button.setTitleColor(UIColor.white, for: .highlighted)
+        button.setTitleColor(UIColor.black, for: UIControlState())
+        button.setBackgroundImage(UIImage(named: "button"), for: .highlighted)
         contentView.addSubview(button)
-        button.addTarget(self, action: #selector(XCActionSheet.click), forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(XCActionSheet.click), for: .touchUpInside)
         button.tag = 100
     }
     
-    func showInView(view: UIView) -> () {
+    func showInView(_ view: UIView) -> () {
         view.addSubview(self)
         fatherView = view
         
-        contentView.frame = CGRectMake(0, view.bounds.size.height, view.bounds.size.width, cellHeight * CGFloat(items.count + 1) + blackMarganHeight)
+        contentView.frame = CGRect(x: 0, y: view.bounds.size.height, width: view.bounds.size.width, height: cellHeight * CGFloat(items.count + 1) + blackMarganHeight)
         config()
-        UIView.animateWithDuration(0.2) {
+        UIView.animate(withDuration: 0.2, animations: {
             
-            self.contentView.frame = CGRectMake(0, view.bounds.size.height - cellHeight * CGFloat(self.items.count + 1) - blackMarganHeight, view.bounds.size.width, cellHeight * CGFloat(self.items.count + 1) + blackMarganHeight)
-        }
+            self.contentView.frame = CGRect(x: 0, y: view.bounds.size.height - cellHeight * CGFloat(self.items.count + 1) - blackMarganHeight, width: view.bounds.size.width, height: cellHeight * CGFloat(self.items.count + 1) + blackMarganHeight)
+        }) 
     }
     
-    func click(button: UIButton) -> () {
-        button.highlighted = true
+    func click(_ button: UIButton) -> () {
+        button.isHighlighted = true
         if button.tag != 100 {
             delegate?.dismissWithButtonIndex(self, index: button.tag)
         }
