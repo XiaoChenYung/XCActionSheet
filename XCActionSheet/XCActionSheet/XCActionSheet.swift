@@ -37,7 +37,7 @@ class XCActionSheet: UIView {
     }
     
     fileprivate func config() {
-//        backgroundColor = UIColor.init(red: 230, green: 230, blue: 230, alpha
+//        backgroundColor = UIColor.init(red: 230, green: 230, blue: 230, al
         self.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
 //        contentView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
         addSubview(contentView)
